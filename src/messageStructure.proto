@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+message Request {
+    oneof request {
+        StopRequest stop = 1;
+        ResetBlockListsRequest reset = 2;
+        ExpressionRequest expr = 3;
+    }
+}
+
+message StopRequest {}
+message ResetBlockListsRequest {}
+
+message ExpressionRequest {
+    string username = 1;
+    string password = 2;
+    string expression = 3;
+}
+
+message Response {
+    oneof response {
+        StopResponse stop = 1;
+        ResetBlockListsResponse reset = 2;
+        ExpressionResponse expr = 3;
+    }
+}
+
+message StopResponse {}
+message ResetBlockListsResponse {}
+
+message ExpressionResponse {
+    bool authenticated = 1;
+    string result = 2;
+}
